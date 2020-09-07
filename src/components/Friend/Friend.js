@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 
 const Friend = (props) => {
 
@@ -16,7 +17,14 @@ const Friend = (props) => {
         borderRadius: "20px"
     }
 
+    const [likeColor, setLikeColor] = useState("");
+
+    // const handleLike = () => {
+    //     setLikeColor(likeColor ? "" : "primary");
+    // }
+
     return (
+
         <div style={friendStyle}>
             <h2>Name: {name}</h2>
             <p>Email: {email}</p>
@@ -25,6 +33,8 @@ const Friend = (props) => {
             </Link>
             <br/>
             <button onClick={() => handleClick(id)}>Click me</button>
+            <br/>
+            <ThumbUpAltIcon color={likeColor} onClick={() => setLikeColor(likeColor ? "" : "primary")}></ThumbUpAltIcon>
         </div>
     );
 };
